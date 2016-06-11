@@ -1,5 +1,6 @@
+#line 2 "lex.scanner.c"
 
-#line 3 "lex.yy.c"
+#line 4 "lex.scanner.c"
 
 #define  YY_INT_ALIGNED short int
 
@@ -53,6 +54,7 @@ typedef int flex_int32_t;
 typedef unsigned char flex_uint8_t; 
 typedef unsigned short int flex_uint16_t;
 typedef unsigned int flex_uint32_t;
+#endif /* ! C99 */
 
 /* Limits of integral types. */
 #ifndef INT8_MIN
@@ -82,8 +84,6 @@ typedef unsigned int flex_uint32_t;
 #ifndef UINT32_MAX
 #define UINT32_MAX             (4294967295U)
 #endif
-
-#endif /* ! C99 */
 
 #endif /* ! FLEXINT_H */
 
@@ -141,15 +141,7 @@ typedef unsigned int flex_uint32_t;
 
 /* Size of default input buffer. */
 #ifndef YY_BUF_SIZE
-#ifdef __ia64__
-/* On IA-64, the buffer size is 16k, not 8k.
- * Moreover, YY_BUF_SIZE is 2*YY_READ_BUF_SIZE in the general case.
- * Ditto for the __ia64__ case accordingly.
- */
-#define YY_BUF_SIZE 32768
-#else
 #define YY_BUF_SIZE 16384
-#endif /* __ia64__ */
 #endif
 
 /* The state buf must be large enough to hold one state per character in the main buffer.
@@ -368,8 +360,8 @@ static void yy_fatal_error (yyconst char msg[]  );
 	*yy_cp = '\0'; \
 	(yy_c_buf_p) = yy_cp;
 
-#define YY_NUM_RULES 26
-#define YY_END_OF_BUFFER 27
+#define YY_NUM_RULES 18
+#define YY_END_OF_BUFFER 19
 /* This struct is not used in this scanner,
    but its presence is necessary. */
 struct yy_trans_info
@@ -377,111 +369,106 @@ struct yy_trans_info
 	flex_int32_t yy_verify;
 	flex_int32_t yy_nxt;
 	};
-static yyconst flex_int16_t yy_accept[66] =
+static yyconst flex_int16_t yy_accept[44] =
     {   0,
-        0,    0,   27,   25,   23,   24,   17,   25,   17,   17,
-       22,   21,   17,   17,   17,   18,   19,   25,   25,   25,
-       25,   25,   25,   25,   25,   11,   15,   14,   21,   12,
-       10,   13,    0,    0,    0,    0,    4,    0,    0,    0,
-        0,   16,    0,    0,    0,   20,    1,    0,    0,    0,
-        0,    0,    2,    5,   20,    0,    9,    0,    0,    7,
-        8,    0,    6,    3,    0
+        0,    0,   19,    5,   17,    1,    2,    3,   17,    6,
+       17,   17,   12,   12,   13,   12,   10,    7,    7,    4,
+       14,    0,   15,    0,    6,   11,    0,    0,    0,    7,
+        7,   10,    9,    7,    0,   15,   16,    9,    9,    9,
+        8,    9,    0
     } ;
 
 static yyconst flex_int32_t yy_ec[256] =
     {   0,
-        1,    1,    1,    1,    1,    1,    1,    1,    2,    3,
-        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    2,    4,    1,    1,    1,    1,    5,    1,    6,
-        6,    6,    6,    6,    6,    1,    7,    8,    9,    9,
-        9,    9,    9,    9,    9,    9,    9,    1,    6,   10,
-       11,   12,    1,    1,   13,   13,   13,   13,   13,   13,
-       13,   13,   13,   13,   13,   13,   13,   13,   13,   13,
-       13,   13,   13,   13,   13,   13,   13,   13,   13,   13,
-       14,    1,   15,    1,    1,    1,   16,   17,   18,   19,
-
-       20,   21,   22,   23,   24,   22,   25,   26,   22,   27,
-       22,   28,   22,   29,   30,   31,   32,   22,   33,   22,
-       22,   22,    6,   34,    6,    1,    1,    1,    1,    1,
-        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-
-        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    1,    1,    1,    1
-    } ;
-
-static yyconst flex_int32_t yy_meta[35] =
-    {   0,
-        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    1,    1,    1,    1,    2,    2,    2,    2,    2,
+        1,    2,    2,    2,    2,    2,    2,    2,    3,    4,
+        2,    2,    5,    2,    2,    2,    2,    2,    2,    2,
         2,    2,    2,    2,    2,    2,    2,    2,    2,    2,
-        2,    2,    2,    1
+        2,    3,    2,    6,    7,    8,    2,    2,    9,   10,
+       10,    2,   11,   12,   13,   14,    2,   15,   16,   16,
+       16,   16,   16,   16,   16,   16,   16,   10,   17,    2,
+       18,   19,   20,    2,   21,   21,   21,   21,   21,   21,
+       22,   22,   22,   22,   22,   22,   22,   22,   22,   22,
+       22,   22,   22,   22,   22,   22,   22,   22,   22,   22,
+        2,   23,    2,    2,   22,    2,   21,   21,   21,   21,
+
+       24,   21,   22,   22,   22,   22,   22,   22,   22,   22,
+       22,   22,   22,   22,   22,   22,   22,   22,   22,   25,
+       22,   22,    2,    2,    2,    2,    2,    2,    2,    2,
+        2,    2,    2,    2,    2,    2,    2,    2,    2,    2,
+        2,    2,    2,    2,    2,    2,    2,    2,    2,    2,
+        2,    2,    2,    2,    2,    2,    2,    2,    2,    2,
+        2,    2,    2,    2,    2,    2,    2,    2,    2,    2,
+        2,    2,    2,    2,    2,    2,    2,    2,    2,    2,
+        2,    2,    2,    2,    2,    2,    2,    2,    2,    2,
+        2,    2,    2,    2,    2,    2,    2,    2,    2,    2,
+
+        2,    2,    2,    2,    2,    2,    2,    2,    2,    2,
+        2,    2,    2,    2,    2,    2,    2,    2,    2,    2,
+        2,    2,    2,    2,    2,    2,    2,    2,    2,    2,
+        2,    2,    2,    2,    2,    2,    2,    2,    2,    2,
+        2,    2,    2,    2,    2,    2,    2,    2,    2,    2,
+        2,    2,    2,    2,    2
     } ;
 
-static yyconst flex_int16_t yy_base[67] =
+static yyconst flex_int32_t yy_meta[26] =
     {   0,
-        0,    0,   77,   78,   78,   78,   65,   70,   78,   67,
-       78,   27,   62,   61,   60,   78,   78,   41,   46,   42,
-       18,   38,   46,   42,   30,   78,   78,   78,   32,   78,
-       78,   78,   43,   46,   31,   47,   78,   28,   34,   22,
-       33,   78,   40,   26,   34,    0,   78,   25,   32,   18,
-       23,   23,   78,   78,    0,   16,   78,   17,   24,   78,
-       78,   16,   78,   78,   78,   40
+        1,    1,    1,    2,    1,    1,    1,    3,    4,    1,
+        1,    1,    1,    5,    6,    6,    1,    1,    1,    1,
+        6,    5,    1,    6,    5
     } ;
 
-static yyconst flex_int16_t yy_def[67] =
+static yyconst flex_int16_t yy_base[50] =
     {   0,
-       65,    1,   65,   65,   65,   65,   65,   65,   65,   65,
-       65,   65,   65,   65,   65,   65,   65,   65,   65,   65,
-       65,   65,   65,   65,   65,   65,   65,   65,   65,   65,
-       65,   65,   65,   65,   65,   65,   65,   65,   65,   65,
-       65,   65,   65,   65,   65,   66,   65,   65,   65,   65,
-       65,   65,   65,   65,   66,   65,   65,   65,   65,   65,
-       65,   65,   65,   65,    0,   65
+        0,    0,   68,  100,  100,  100,  100,  100,   20,    0,
+        0,   44,  100,   12,  100,   14,    0,   30,   17,  100,
+      100,   28,  100,   29,    0,    0,   48,   41,   22,   24,
+       33,    0,   45,   48,    0,   36,  100,   38,    0,   59,
+        0,   50,  100,   75,   81,   85,   91,   93,   35
     } ;
 
-static yyconst flex_int16_t yy_nxt[113] =
+static yyconst flex_int16_t yy_def[50] =
+    {   0,
+       43,    1,   43,   43,   43,   43,   43,   43,   44,   45,
+       46,   47,   43,   43,   43,   43,   48,   43,   43,   43,
+       43,   44,   43,   44,   45,   46,   43,   47,   43,   18,
+       43,   48,   43,   43,   49,   44,   43,   43,   33,   43,
+       49,   43,    0,   43,   43,   43,   43,   43,   43
+    } ;
+
+static yyconst flex_int16_t yy_nxt[126] =
     {   0,
         4,    5,    6,    7,    8,    9,   10,   11,   12,   13,
-       14,   15,    4,   16,   17,    4,   18,   19,    4,   20,
-        4,    4,    4,   21,    4,    4,    4,   22,   23,    4,
-        4,    4,   24,   25,   29,   29,   36,   49,   37,   29,
-       29,   55,   64,   63,   38,   62,   61,   60,   59,   58,
-       57,   56,   50,   54,   53,   52,   51,   48,   47,   46,
-       45,   44,   43,   42,   41,   40,   39,   35,   34,   33,
-       32,   31,   30,   28,   27,   26,   65,    3,   65,   65,
-       65,   65,   65,   65,   65,   65,   65,   65,   65,   65,
-       65,   65,   65,   65,   65,   65,   65,   65,   65,   65,
+       14,   15,   16,   17,   18,   19,   20,   13,   13,   21,
+       17,   17,    5,   17,   17,   23,   29,   29,   30,   31,
+       33,   34,   34,   23,   36,   33,   29,   29,   31,   31,
+       41,   23,   24,   33,   34,   34,   33,   31,   31,   37,
+       24,   24,   42,   42,   35,   38,   37,   38,   24,   39,
+       39,   33,   34,   34,   42,   42,   28,   43,   40,   38,
+       43,   38,   43,   42,   42,   22,   22,   22,   22,   22,
+       22,   25,   43,   25,   25,   25,   25,   26,   43,   26,
+       26,   27,   27,   27,   43,   27,   27,   32,   32,    3,
 
-       65,   65,   65,   65,   65,   65,   65,   65,   65,   65,
-       65,   65
+       43,   43,   43,   43,   43,   43,   43,   43,   43,   43,
+       43,   43,   43,   43,   43,   43,   43,   43,   43,   43,
+       43,   43,   43,   43,   43
     } ;
 
-static yyconst flex_int16_t yy_chk[113] =
+static yyconst flex_int16_t yy_chk[126] =
     {   0,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    1,    1,    1,   12,   12,   21,   40,   21,   29,
-       29,   66,   62,   59,   21,   58,   56,   52,   51,   50,
-       49,   48,   40,   45,   44,   43,   41,   39,   38,   36,
-       35,   34,   33,   25,   24,   23,   22,   20,   19,   18,
-       15,   14,   13,   10,    8,    7,    3,   65,   65,   65,
-       65,   65,   65,   65,   65,   65,   65,   65,   65,   65,
-       65,   65,   65,   65,   65,   65,   65,   65,   65,   65,
+        1,    1,    1,    1,    1,    9,   14,   14,   16,   16,
+       19,   19,   19,   22,   24,   29,   29,   29,   30,   30,
+       49,   36,    9,   18,   18,   18,   31,   31,   31,   28,
+       22,   24,   38,   38,   18,   33,   27,   33,   36,   33,
+       33,   34,   34,   34,   42,   42,   12,    3,   33,   40,
+        0,   40,    0,   40,   40,   44,   44,   44,   44,   44,
+       44,   45,    0,   45,   45,   45,   45,   46,    0,   46,
+       46,   47,   47,   47,    0,   47,   47,   48,   48,   43,
 
-       65,   65,   65,   65,   65,   65,   65,   65,   65,   65,
-       65,   65
+       43,   43,   43,   43,   43,   43,   43,   43,   43,   43,
+       43,   43,   43,   43,   43,   43,   43,   43,   43,   43,
+       43,   43,   43,   43,   43
     } ;
 
 static yy_state_type yy_last_accepting_state;
@@ -498,17 +485,93 @@ int yy_flex_debug = 0;
 #define YY_MORE_ADJ 0
 #define YY_RESTORE_YY_MORE_OFFSET
 char *yytext;
-#line 1 "lex.l"
-#line 2 "lex.l"
-	//#include "define.h"
-	#include "y.tab.h"
-	#include "struct.h"
-	#define BSIZE 4096
-	extern char ins[BSIZE][300];
-	extern int insid;
-	extern struct Arithmetic ar;
-	int flow = 0;
-#line 512 "lex.yy.c"
+#line 1 "../CPU/scanner.l"
+#line 2 "../CPU/scanner.l"
+/* SPIM S20 MIPS simulator.
+   Lexical scanner.
+
+   Copyright (c) 1990-2010, James R. Larus.
+   All rights reserved.
+
+   Redistribution and use in source and binary forms, with or without modification,
+   are permitted provided that the following conditions are met:
+
+   Redistributions of source code must retain the above copyright notice,
+   this list of conditions and the following disclaimer.
+
+   Redistributions in binary form must reproduce the above copyright notice,
+   this list of conditions and the following disclaimer in the documentation and/or
+   other materials provided with the distribution.
+
+   Neither the name of the James R. Larus nor the names of its contributors may be
+   used to endorse or promote products derived from this software without specific
+   prior written permission.
+
+   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+   AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+   IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+   ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+   LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+   CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE
+   GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+   HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+   LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+   OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+*/
+
+
+#include "spim.h"
+#include "string-stream.h"
+#include "spim-utils.h"
+#include "inst.h"
+#include "reg.h"
+#include "sym-tbl.h"
+#include "parser.h"
+#include "scanner.h"
+#include "parser_yacc.h"
+
+#ifdef _WIN32
+#include <io.h>
+#else
+#include <unistd.h>
+#endif
+
+#ifndef YY_CHAR
+#define YY_CHAR char
+#endif
+#define YY_NO_UNISTD_H
+
+/* Exported Variables: */
+
+int only_id;
+int line_no;		/* Line number in input file*/
+
+
+/* Local Variables: */
+
+/* Track which line we are reading and where it began in the buffer. */
+static int current_line_no = 0;
+
+static YY_CHAR *current_line = NULL;
+
+
+static double scan_float;	/* Where FP values are kept */
+
+static int line_returned = 0;	/* Returned current line yet? */
+
+static int eof_returned = 0;	/* Return EOF token yet? */
+
+
+/* Local functions: */
+
+static int check_keyword (YY_CHAR *id, int allow_pseudo_ops);
+static YY_CHAR *copy_str (YY_CHAR *str, int chop);
+static YY_CHAR scan_escape (YY_CHAR **str);
+
+
+#undef yywrap
+
+#line 575 "lex.scanner.c"
 
 #define INITIAL 0
 
@@ -589,12 +652,7 @@ static int input (void );
 
 /* Amount of stuff to slurp up with each read. */
 #ifndef YY_READ_BUF_SIZE
-#ifdef __ia64__
-/* On IA-64, the buffer size is 16k, not 8k */
-#define YY_READ_BUF_SIZE 16384
-#else
 #define YY_READ_BUF_SIZE 8192
-#endif /* __ia64__ */
 #endif
 
 /* Copy whatever the last rule matched to the standard output. */
@@ -602,7 +660,7 @@ static int input (void );
 /* This used to be an fputs(), but since the string might contain NUL's,
  * we now use fwrite().
  */
-#define ECHO do { if (fwrite( yytext, yyleng, 1, yyout )) {} } while (0)
+#define ECHO fwrite( yytext, yyleng, 1, yyout )
 #endif
 
 /* Gets input and stuffs it into "buf".  number of characters read, or YY_NULL,
@@ -613,7 +671,7 @@ static int input (void );
 	if ( YY_CURRENT_BUFFER_LVALUE->yy_is_interactive ) \
 		{ \
 		int c = '*'; \
-		size_t n; \
+		int n; \
 		for ( n = 0; n < max_size && \
 			     (c = getc( yyin )) != EOF && c != '\n'; ++n ) \
 			buf[n] = (char) c; \
@@ -695,10 +753,10 @@ YY_DECL
 	register char *yy_cp, *yy_bp;
 	register int yy_act;
     
-#line 12 "lex.l"
+#line 88 "../CPU/scanner.l"
 
 
-#line 702 "lex.yy.c"
+#line 760 "lex.scanner.c"
 
 	if ( !(yy_init) )
 		{
@@ -751,13 +809,13 @@ yy_match:
 			while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 				{
 				yy_current_state = (int) yy_def[yy_current_state];
-				if ( yy_current_state >= 66 )
+				if ( yy_current_state >= 44 )
 					yy_c = yy_meta[(unsigned int) yy_c];
 				}
 			yy_current_state = yy_nxt[yy_base[yy_current_state] + (unsigned int) yy_c];
 			++yy_cp;
 			}
-		while ( yy_base[yy_current_state] != 78 );
+		while ( yy_base[yy_current_state] != 100 );
 
 yy_find_action:
 		yy_act = yy_accept[yy_current_state];
@@ -783,136 +841,278 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 14 "lex.l"
-return INT;
+#line 90 "../CPU/scanner.l"
+{
+		        if (current_line == NULL)
+			  {
+			    current_line_no = line_no;
+			    current_line = yytext;
+			  }
+		       }
 	YY_BREAK
 case 2:
+/* rule 2 can match eol */
 YY_RULE_SETUP
-#line 15 "lex.l"
-return CHAR;
+#line 99 "../CPU/scanner.l"
+{
+			 line_no += 1;
+			 return (Y_NL);
+			}
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 16 "lex.l"
-return RETURN;
+#line 104 "../CPU/scanner.l"
+{ /* Ignore carrage returns */ }
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 17 "lex.l"
-{++flow; return IF;}
+#line 106 "../CPU/scanner.l"
+{
+			 return (Y_NL);
+			}
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 18 "lex.l"
-{sprintf(ins[insid++], "E"); return ELSE;}
+#line 111 "../CPU/scanner.l"
+{	/* Marker character inserted to allow scanner to
+				   return Y_EOF before returning hard EOF. */
+			  return (Y_EOF);
+			}
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 19 "lex.l"
-{++flow; sprintf(ins[insid++], "W"); return WHILE;}
+#line 116 "../CPU/scanner.l"
+{
+				/* Ignore comments */
+			}
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 20 "lex.l"
-return BREAK;
+#line 121 "../CPU/scanner.l"
+{
+			 if (current_line == NULL)
+			   {
+			     current_line_no = line_no;
+			     current_line = yytext;
+			   }
+			 yylval.i = atoi (yytext);
+			 return (Y_INT);
+			}
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 21 "lex.l"
-return PRINT;
+#line 132 "../CPU/scanner.l"
+{
+			  if (current_line == NULL)
+			    {
+			      current_line_no = line_no;
+			      current_line = yytext;
+			    }
+			  if (*yytext == '-')
+			    {
+			      sscanf(yytext+3, "%x", (unsigned int*)&(yylval.i));
+			      yylval.i = -yylval.i;
+			    }
+			  else
+			    {
+			      sscanf(yytext+2, "%x", (unsigned int*)&(yylval.i));
+			    }
+			  return (Y_INT);
+			}
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 22 "lex.l"
-return READ;
+#line 151 "../CPU/scanner.l"
+{
+			  if (current_line == NULL)
+			    {
+			      current_line_no = line_no;
+			      current_line = yytext;
+			    }
+			  scan_float = atof (yytext);
+			  yylval.p = (double*) &scan_float;
+			  return (Y_FP);
+			}
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 24 "lex.l"
-{ar.op = 'e'; return EQUAL;}
+#line 163 "../CPU/scanner.l"
+{
+			  int token = check_keyword (yytext,
+						     !bare_machine
+						     && accept_pseudo_insts);
+			  label *l;
+
+			  if (current_line == NULL)
+			    {
+			      current_line_no = line_no;
+			      current_line = yytext;
+			    }
+
+			  if (!only_id && token != 0)
+			    {
+			      /* Keyword */
+			      yylval.i = token;
+			      current_line = yytext;
+			      return (token);
+			    }
+
+			  if (only_id && token != 0)
+			    yyerror ("Cannot use opcodes as labels");
+
+			  if ((l = label_is_defined (yytext)) != NULL
+			      && l->const_flag)
+			    {
+			      /* Defined label */
+			      yylval.i = (int) l->addr;
+			      return (Y_INT);
+			    }
+			  else
+			    {
+			      /* Not-yet defined label */
+			      yylval.p = (char*) str_copy (yytext);
+			      return (Y_ID);
+			    }
+			}
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 25 "lex.l"
-{ar.op = 'n'; return NOTEQUAL;}
+#line 202 "../CPU/scanner.l"
+{
+			  int reg_no = register_name_to_number (yytext + 1);
+
+			  if (current_line == NULL)
+			    {
+			      current_line_no = line_no;
+			      current_line = yytext;
+			    }
+
+			  if (reg_no != -1
+			      && *(yytext + 1) == 'f'
+			      && *(yytext + 2) != 'p')
+			    {
+			      /* Floating point register ($f0) */
+			      yylval.i = reg_no;
+			      return (Y_FP_REG);
+			    }
+
+			  if (0 <= reg_no && reg_no < R_LENGTH)
+			    {
+			      /* Register ($r0) */
+			      yylval.i = reg_no;
+			      return (Y_REG);
+			    }
+			  else
+			    {
+			      /* Otherwise, an integer or identifier */
+			      label *l = label_is_defined (yytext);
+
+			      if (l != NULL && l->const_flag)
+				{
+				  yylval.i = (int) l->addr;
+				  return (Y_INT);
+				}
+			      else
+				{
+				  yylval.p = (char*) str_copy (yytext);
+				  return (Y_ID);
+				}
+			    }
+			}
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 26 "lex.l"
-{ar.op = 'l'; return LESSEQUAL;}
+#line 245 "../CPU/scanner.l"
+{
+			  if (current_line == NULL)
+			    {
+			      current_line_no = line_no;
+			      current_line = yytext;
+			    }
+			  return (*yytext);
+			}
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 27 "lex.l"
-{ar.op = 'g'; return GREATEQUAL;}
+#line 255 "../CPU/scanner.l"
+{
+			 if (current_line == NULL)
+			   {
+			     current_line_no = line_no;
+			     current_line = yytext;
+			   }
+			 /* Skip commas */
+		        }
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 28 "lex.l"
-return DOUBLESLASH;
+#line 264 "../CPU/scanner.l"
+{
+			  if (current_line == NULL)
+			    {
+			      current_line_no = line_no;
+			      current_line = yytext;
+			    }
+			  yylval.p = (char*) str_copy (yytext);
+			  /* For top level */
+			  return (Y_ID);
+			}
 	YY_BREAK
 case 15:
+/* rule 15 can match eol */
 YY_RULE_SETUP
-#line 30 "lex.l"
-{ar.op = 'a'; return AND;}
+#line 276 "../CPU/scanner.l"
+{
+			  if (current_line == NULL)
+			    {
+			      current_line_no = line_no;
+			      current_line = yytext;
+			    }
+			  yylval.p = (char*) copy_str (yytext + 1, 1);
+			  return (Y_STR);
+			}
 	YY_BREAK
 case 16:
+/* rule 16 can match eol */
 YY_RULE_SETUP
-#line 31 "lex.l"
-{ar.op = 'o'; return OR;}
+#line 286 "../CPU/scanner.l"
+{
+			  if (current_line == NULL)
+			    {
+			      current_line_no = line_no;
+			      current_line = yytext;
+			    }
+
+			    if (*(yytext + 1) == '\\')
+			      {
+				YY_CHAR *escape = yytext + 1;
+				yylval.i = (int) scan_escape (&escape);
+			      }
+			    else
+			      {
+				yylval.i = (int) *(yytext + 1);
+				return (Y_INT);
+			      }
+			}
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 34 "lex.l"
-{yylval.ch = yytext[0]; return yytext[0];}
+#line 305 "../CPU/scanner.l"
+{
+			  if (current_line == NULL)
+			    {
+			      current_line_no = line_no;
+			      current_line = yytext;
+			    }
+			  yyerror ("Unknown character");
+			}
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 36 "lex.l"
-return yytext[0];
-	YY_BREAK
-case 19:
-YY_RULE_SETUP
-#line 37 "lex.l"
-return yytext[0];
-	YY_BREAK
-case 20:
-YY_RULE_SETUP
-#line 39 "lex.l"
-{yylval.chs = yytext; return ID;}
-	YY_BREAK
-case 21:
-YY_RULE_SETUP
-#line 40 "lex.l"
-{yylval.num = atoi(yytext); return NUMBER;}
-	YY_BREAK
-case 22:
-YY_RULE_SETUP
-#line 41 "lex.l"
-{yylval.num = atoi(yytext); return NUMBER;}
-	YY_BREAK
-case 23:
-YY_RULE_SETUP
-#line 43 "lex.l"
-;
-	YY_BREAK
-case 24:
-/* rule 24 can match eol */
-YY_RULE_SETUP
-#line 44 "lex.l"
-{if(flow) {sprintf(ins[insid++], ")"); --flow;}}
-	YY_BREAK
-case 25:
-YY_RULE_SETUP
-#line 45 "lex.l"
-printf("unexpected character %c\n", yytext[0]);
-	YY_BREAK
-case 26:
-YY_RULE_SETUP
-#line 47 "lex.l"
+#line 315 "../CPU/scanner.l"
 ECHO;
 	YY_BREAK
-#line 916 "lex.yy.c"
+#line 1116 "lex.scanner.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1195,7 +1395,7 @@ static int yy_get_next_buffer (void)
 
 	for ( yy_cp = (yytext_ptr) + YY_MORE_ADJ; yy_cp < (yy_c_buf_p); ++yy_cp )
 		{
-		register YY_CHAR yy_c = (*yy_cp ? yy_ec[YY_SC_TO_UI(*yy_cp)] : 1);
+		register YY_CHAR yy_c = (*yy_cp ? yy_ec[YY_SC_TO_UI(*yy_cp)] : 2);
 		if ( yy_accept[yy_current_state] )
 			{
 			(yy_last_accepting_state) = yy_current_state;
@@ -1204,7 +1404,7 @@ static int yy_get_next_buffer (void)
 		while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 			{
 			yy_current_state = (int) yy_def[yy_current_state];
-			if ( yy_current_state >= 66 )
+			if ( yy_current_state >= 44 )
 				yy_c = yy_meta[(unsigned int) yy_c];
 			}
 		yy_current_state = yy_nxt[yy_base[yy_current_state] + (unsigned int) yy_c];
@@ -1223,7 +1423,7 @@ static int yy_get_next_buffer (void)
 	register int yy_is_jam;
     	register char *yy_cp = (yy_c_buf_p);
 
-	register YY_CHAR yy_c = 1;
+	register YY_CHAR yy_c = 2;
 	if ( yy_accept[yy_current_state] )
 		{
 		(yy_last_accepting_state) = yy_current_state;
@@ -1232,11 +1432,11 @@ static int yy_get_next_buffer (void)
 	while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 		{
 		yy_current_state = (int) yy_def[yy_current_state];
-		if ( yy_current_state >= 66 )
+		if ( yy_current_state >= 44 )
 			yy_c = yy_meta[(unsigned int) yy_c];
 		}
 	yy_current_state = yy_nxt[yy_base[yy_current_state] + (unsigned int) yy_c];
-	yy_is_jam = (yy_current_state == 65);
+	yy_is_jam = (yy_current_state == 43);
 
 	return yy_is_jam ? 0 : yy_current_state;
 }
@@ -1670,8 +1870,8 @@ YY_BUFFER_STATE yy_scan_string (yyconst char * yystr )
 
 /** Setup the input buffer state to scan the given bytes. The next call to yylex() will
  * scan from a @e copy of @a bytes.
- * @param yybytes the byte buffer to scan
- * @param _yybytes_len the number of bytes in the buffer pointed to by @a bytes.
+ * @param bytes the byte buffer to scan
+ * @param len the number of bytes in the buffer pointed to by @a bytes.
  * 
  * @return the newly allocated buffer state object.
  */
@@ -1910,13 +2110,408 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 47 "lex.l"
+#line 315 "../CPU/scanner.l"
 
 
-int yywrap(void)
+
+
+
+void
+initialize_scanner (FILE *in_file)
 {
-	return 1;
+  yyin = in_file;
+#ifdef FLEX_SCANNER
+  yyrestart(in_file);
+#if (YY_FLEX_MAJOR_VERSION==2 && YY_FLEX_MINOR_VERSION==5 && YY_FLEX_SUBMINOR_VERSION>=33)
+  /* flex 2.5.33 flipped the polarity of this flag (sigh) */
+  yy_init = 0;
+#else
+  yy_init = 1;
+#endif
+#endif
+  line_no = 1;
+  current_line = NULL;
+  line_returned = 0;
+  eof_returned = 0;
 }
 
 
+void
+scanner_start_line ()
+{
+  current_line = NULL;
+  line_returned = 0;
+}
+
+
+/* This is a work-around for a bug in flex v 2.5.31 (but not earlier or
+   later versions such as 2.5.4) that left this symbol undefined. */
+
+#ifndef yytext_ptr
+#define yytext_ptr yytext
+#endif
+
+
+/* Use yywrap to insert a marker character, which causes the
+   scanner to return Y_EOF, before return a hard EOF.  This
+   wouldn't be necessary, except that bison does not allow
+   the parser to use EOF (= 0) as a non-terminal */
+
+int yywrap()
+{
+	if (eof_returned)
+		return (1);
+	else
+	{
+		unput ('\001');
+		eof_returned = 1;
+#ifdef FLEX_SCANNER
+		yy_did_buffer_switch_on_eof = 1;
+#endif
+		return (0);
+	}
+}
+
+
+/* A backslash has just been read, return the character designated by *STR.  */
+
+static YY_CHAR
+scan_escape (YY_CHAR **str)
+{
+  YY_CHAR first = **str;
+  *str += 1;
+  switch (first)
+    {
+    case 'a': return '\a';
+    case 'b': return '\b';
+    case 'f': return '\f';
+    case 'n': return '\n';
+    case 'r': return '\r';
+    case 't': return '\t';
+    case '\\': return '\\';
+    case '"': return '"';
+    case '\'': return '\'';
+
+    case 'x':
+    case 'X':
+      {
+	YY_CHAR c1 = **str, c2 = *(*str + 1);
+	int b = 0;
+
+	if ('0' <= c1 && c1 <= '9') b = c1 - '0';
+	else if ('A' <= c1 && c1 <= 'F') b = c1 - 'A' + 10;
+	else if ('a' <= c1 && c1 <= 'f') b = c1 - 'a' + 10;
+	else yyerror ("Bad character in \\X construct in string");
+
+	b <<= 4;
+	if ('0' <= c2 && c2 <= '9') b += c2 - '0';
+	else if ('A' <= c2 && c2 <= 'F') b += c2 - 'A' + 10;
+	else if ('a' <= c2 && c2 <= 'f') b += c2 - 'a' + 10;
+	else yyerror ("Bad character in \\X construct in string");
+
+	*str += 2;
+	return (YY_CHAR) b;
+      }
+
+    default:
+      {
+	char message[] = "Bad character \\X";
+	message[strlen (message) - 1] = first;
+	yyerror (message);
+	return '\0';
+      }
+    }
+}
+
+
+/* Return a freshly-allocated copy of STRING with the last CHOP
+   characters removed. */
+
+static YY_CHAR *
+copy_str (YY_CHAR *str, int chop)
+{
+  int new_len = strlen (str) - chop;
+  YY_CHAR *new_str = (YY_CHAR *) xmalloc (new_len + 1), *n;
+
+  for (n = new_str; *str != '\0' && new_len > 0; new_len -= 1)
+    if (*str == '\\')
+      switch (*(str + 1))
+	{
+	case 'n':
+	  {
+	    *n ++ = '\n';
+	    str += 2;
+	    new_len -= 1;
+	    continue;
+	  }
+	case 't':
+	  {
+	    *n ++ = '\t';
+	    str += 2;
+	    new_len -= 1;
+	    continue;
+	  }
+	case '"':
+	  {
+	    *n ++ = '"';
+	    str += 2;
+	    new_len -= 1;
+	    continue;
+	  }
+	case '0':		/* \nnn */
+	case '1':
+	case '2':
+	case '3':
+	  {
+	    YY_CHAR c2 = *(str + 2), c3 = *(str + 3);
+	    int b = (*(str + 1) - '0') << 3;
+
+	    if ('0' <= c2 && c2 <= '7')
+	      b = (c2 - '0') << 3;
+	    else
+	      yyerror ("Bad character in \\ooo construct in string");
+
+	    if ('0' <= c3 && c3 <= '7')
+	      b += c3 - '0';
+	    else
+	      yyerror ("Bad character in \\ooo construct in string");
+
+	    *n ++ = (YY_CHAR) b;
+	    str += 4;
+	    new_len -= 3;
+	    continue;
+	  }
+	case 'X':
+	  {
+	    YY_CHAR c2 = *(str + 2), c3 = *(str + 3);
+	    int b = 0;
+
+	    if ('0' <= c2 && c2 <= '9')
+	      b = c2 - '0';
+	    else if ('A' <= c2 && c2 <= 'F')
+	      b = c2 - 'A' + 10;
+	    else
+	      yyerror ("Bad character in \\X construct in string");
+
+	    b <<= 4;
+	    if ('0' <= c3 && c3 <= '9')
+	      b += c3 - '0';
+	    else if ('A' <= c3 && c3 <= 'F')
+	      b += c3 - 'A' + 10;
+	    else
+	      yyerror ("Bad character in \\X construct in string");
+
+	    *n ++ = (YY_CHAR) b;
+	    str += 4;
+	    new_len -= 3;
+	    continue;
+	  }
+	default:
+	  {
+	    *n ++ = *str ++;
+	    continue;
+	  }
+	}
+    else
+      *n ++ = *str ++;
+
+  *n = '\0';
+  return (new_str);
+}
+
+
+/* On a parse error, write out the current line and print a caret (^)
+   below the point at which the error occured.	Also, reset the input
+   stream to the begining of the next line. */
+
+char*
+erroneous_line ()
+{
+  int prefix_length = yytext - current_line;
+  int i, c;
+  str_stream ss;
+
+  ss_init (&ss);
+
+  if (current_line == NULL) return ss_to_string (&ss);
+
+  /* Print part of line that has been consumed. */
+  ss_printf (&ss, "	  ");
+  if (0 <= prefix_length)
+    {
+      /* yytext and current_line point to same line */
+      c = *(current_line + prefix_length);
+      *(current_line + prefix_length) = '\0';
+      ss_printf (&ss, "%s", current_line);
+      *(current_line + prefix_length) = (char)c;
+      ss_printf (&ss, "%s", yytext);
+    }
+  else
+    {
+      /* yytext and current_line point to different lines */
+      ss_printf (&ss, "%s", current_line);
+      prefix_length = strlen(current_line);
+    }
+
+  /* Flush the rest of the line (not consumed) from lex input. */
+  if (*yytext != '\n')
+    {
+#ifdef __cplusplus
+      while ((c = yyinput ()) != '\n' && c != EOF && c != 1)
+#else
+      while ((c = input ()) != '\n' && c != EOF && c != 1)
+#endif
+      {
+        ss_printf (&ss, "%c", c);
+      }
+      if (c == '\n') unput ('\n');
+      current_line = NULL;
+    }
+
+  /* Print marker to point at which consumption stopped. */
+  ss_printf (&ss, "\n	  ");
+  for (i = 0; i < prefix_length; i ++) ss_printf (&ss, " ");
+  ss_printf (&ss, "^\n");
+
+  return ss_to_string (&ss);
+}
+
+
+static name_val_val keyword_tbl [] = {
+#undef OP
+#define OP(NAME, OPCODE, TYPE, R_OPCODE) {NAME, OPCODE, TYPE},
+#include "op.h"
+};
+
+
+static int
+check_keyword (YY_CHAR *id, int allow_pseudo_ops)
+{
+  name_val_val *entry =
+    map_string_to_name_val_val (keyword_tbl,
+			     sizeof(keyword_tbl) / sizeof (name_val_val),
+			     id);
+  if (entry == NULL)
+    return (0);
+  else if (!allow_pseudo_ops && entry->value2 == PSEUDO_OP)
+    return (0);
+  else
+    return (entry->value1);
+}
+
+
+static name_val_val register_tbl [] = {
+  {"a0", 4, 0},
+  {"a1", 5, 0},
+  {"a2", 6, 0},
+  {"a3", 7, 0},
+  {"at", 1, 0},
+  {"fp", 30, 0},
+  {"gp", 28, 0},
+  {"k0", 26, 0},
+  {"k1", 27, 0},
+  {"kt0", 26, 0},
+  {"kt1", 27, 0},
+  {"ra", 31, 0},
+  {"s0", 16, 0},
+  {"s1", 17, 0},
+  {"s2", 18, 0},
+  {"s3", 19, 0},
+  {"s4", 20, 0},
+  {"s5", 21, 0},
+  {"s6", 22, 0},
+  {"s7", 23, 0},
+  {"s8", 30, 0},
+  {"sp", 29, 0},
+  {"t0", 8, 0},
+  {"t1", 9, 0},
+  {"t2", 10, 0},
+  {"t3", 11, 0},
+  {"t4", 12, 0},
+  {"t5", 13, 0},
+  {"t6", 14, 0},
+  {"t7", 15, 0},
+  {"t8", 24, 0},
+  {"t9", 25, 0},
+  {"v0", 2, 0},
+  {"v1", 3, 0},
+  {"zero", 0, 0}
+};
+
+int
+register_name_to_number (char *name)
+{
+  int c1 = *name, c2 = *(name + 1);
+
+  if ('0' <= c1 && c1 <= '9'
+      && (c2 == '\0' || (('0' <= c2 && c2 <= '9') && *(name + 2) == '\0')))
+    return (atoi (name));
+  else if (c1 == 'f' && c2 >= '0' && c2 <= '9')
+    return atoi (name + 1);
+  else
+    {
+      name_val_val *entry =
+	map_string_to_name_val_val (register_tbl,
+				 sizeof (register_tbl) / sizeof (name_val_val),
+				 name);
+      if (entry == NULL)
+	return (-1);
+      else
+	return (entry->value1);
+    }
+}
+
+
+/* Exactly once, return the current source line, as a printable string
+   with a line number.  Subsequent calls receive NULL instead of the
+   line. */
+
+char *
+source_line ()
+{
+  if (line_returned)
+    return (NULL);
+  else if (current_line == NULL)	/* Error on line */
+    return (NULL);
+  else
+    {
+      YY_CHAR *eol1, c1;
+      YY_CHAR *null1 = NULL;
+      char *r;
+
+      /* Find end of line: */
+      for (eol1 = current_line; *eol1 != '\0' && *eol1 != '\n'; ) eol1 += 1;
+
+#ifdef FLEX_SCANNER
+      /* Ran into null byte, inserted by yylex. In necessary, look further
+	 for newline. (This only works for scanners produced by flex. Other
+         versions of lex need similar code, or source code lines will end
+         early. */
+      if (*eol1 == '\0' && yy_hold_char != '\n')
+	{
+	  null1 = eol1;
+	  *eol1 = yy_hold_char;
+	  for ( ; *eol1 != '\0' && *eol1 != '\n'; )
+	    eol1 += 1;
+	}
+#endif
+
+      /* Save end-of-line character and null terminate string so it can
+	 be printed. */
+      c1 = *eol1;
+      *eol1 = '\0';
+
+      r = (char *) xmalloc (eol1 - current_line + 10);
+      sprintf (r, "%d: %s", current_line_no, current_line);
+
+      /* Restore end-of-line character and, if necessary, yylex's null byte. */
+      *eol1 = c1;
+      if (null1 != NULL)
+	{
+	  *null1 = '\0';
+	}
+      line_returned = 1;
+      return ((char *) r);
+    }
+}
 

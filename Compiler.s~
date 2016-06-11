@@ -1,0 +1,57 @@
+	.text
+	.globl main
+main: 
+	li $v0, 5
+	syscall
+	move $t0, $v0
+	li $v0, 5
+	syscall
+	move $t1, $v0
+	move $a0, $t0
+	li $v0, 1
+	syscall
+	move $a0, $t1
+	li $v0, 1
+	syscall
+	add $t2, $t0, $t1
+	mul $t2, $t2, $t1
+	move $t3, $t2
+	move $a0, $t3
+	li $v0, 1
+	syscall
+	div $t2, $t1, 1
+	mul $t2, $t0, $t2
+	sub $t2, $t1, $t2
+	add $t2, $t0, $t2
+	move $t3, $t2
+	move $a0, $t3
+	li $v0, 1
+	syscall
+	seq $t2, $t0, $t1
+	beq $t2, $0, else0
+	sub $t2, $t0, $t1
+	move $t3, $t2
+	move $a0, $t3
+	li $v0, 1
+	syscall
+	b endif0
+else0:
+	sub $t2, $t1, $t0
+	move $t3, $t2
+	move $a0, $t3
+	li $v0, 1
+	syscall
+endif0:
+	add $t4, $0, 10
+while1:
+	sgt $t2, $t4, 0
+	beq $t2, $0, endwhile1
+	sub $t2, $t4, 1
+	move $t4, $t2
+	b while1
+endwhile1:
+	move $a0, $t4
+	li $v0, 1
+	syscall
+	li $v0, 10
+	syscall
