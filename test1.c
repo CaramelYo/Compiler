@@ -10,7 +10,6 @@ int idMain ( ) {
     int idB ;
     int idResult ;
     int idLoop;
-    int idArray [ 10 ] ;
 
     read idA ;
     read idB ;
@@ -38,11 +37,6 @@ int idMain ( ) {
         idLoop = idLoop - 1 ;
     }
     print idLoop ;
-
-    idArray [ 1 ] = 5 ;
-    idArray [ 6 ] = 10 ;
-    idResult = idArray [ 1 ] + idArray [ 6 ];
-    print idArray;
 
     idResult = idFunction ( idA , idB ) ;
     print idResult ;

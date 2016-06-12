@@ -1,5 +1,12 @@
 %{
-#include "define.h"
+	//#include "define.h"
+	#include "y.tab.h"
+	#include "struct.h"
+	#define BSIZE 4096
+	extern char ins[BSIZE][300];
+	extern int insid;
+	extern struct Arithmetic ar;
+	int flow = 0;
 %}
 
 %%
@@ -7,46 +14,35 @@
 "int"			return INT;
 "char"			return CHAR;
 "return"		return RETURN;
-"if"			return IF;
-"else"			return ELSE;
-"while"			return WHILE;
+"if"			{++flow; return IF;}
+"else"			{sprintf(ins[insid++], "E"); return ELSE;}
+"while"			{++flow; sprintf(ins[insid++], "W"); return WHILE;}
 "break"			return BREAK;
 "print"			return PRINT;
 "read"			return READ;
 
-"=="			return EQUAL;
-"!="			return NOTEQUAL;
-"<="			return LESSEQUAL;
-">="			return GREATEQUAL;
+"=="			{ar.op = 'e'; return EQUAL;}
+"!="			{ar.op = 'n'; return NOTEQUAL;}
+"<="			{ar.op = 'l'; return LESSEQUAL;}
+">="			{ar.op = 'g'; return GREATEQUAL;}
 "//"			return DOUBLESLASH;
 
-"&&"			return AND;
-"||"			return OR;
+"&&"			{ar.op = 'a'; return AND;}
+"||"			{ar.op = 'o'; return OR;}
 
-"="			return ASSIGN;
-"!"			return EXCLAMATION;
-"+"			return ADD;
-"-"			return SUBTRACT;
-"*"			return MULTIPLY;
-"/"			return SLASH;
-"<"			return LESS;
-">"			return GREAT;
-"["			return LBRACKET;
-"]"			return RBRACKET;
-"("			return LPARENTHESIS;
-")"			return RPARENTHESIS;
-"{"			return LBRACE;
-"}"			return RBRACE;
-";"			return SEMICOLON;
-","			return COMMA;
 
-id[A-Z][a-z]*		return IDENTIFIER;
-[1-9][0-9]*		return NUMBER;
-[0-9]			return NUMBER;
-\"[a-zA-z0-9]+\"	return CHARV; 
+[-=!+*/<>{}(),;]	{yylval.ch = yytext[0]; return yytext[0];}
 
-[ \t\n]			;
-.			printf("unexpected character\n");
+"["			return yytext[0];
+"]"			return yytext[0];
+
+id[A-Z][a-z]*		{yylval.chs = yytext; return ID;}
+[1-9][0-9]*		{yylval.num = atoi(yytext); return NUMBER;}
+[0-9]			{yylval.num = atoi(yytext); return NUMBER;}
+
+[ \t]			;
+[\n]			{if(flow) {sprintf(ins[insid++], ")"); --flow;}}
+.			printf("unexpected character %c\n", yytext[0]);
 
 %%
 int yywrap(void)
